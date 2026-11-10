@@ -1,0 +1,25 @@
+<!-- @dsCard group="Modul" height=240 subtitle="Každý projekt má vlastný vzor riadkov" -->
+<div style="background:var(--bg);padding:24px;border-radius:var(--radius-lg);display:flex;gap:var(--space-2);flex-wrap:wrap">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.c{width:190px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-2)}
+.fp{height:108px;display:grid;align-content:start;gap:6px;margin-bottom:12px}
+.ln{display:flex;gap:var(--module-gap)}
+.b{height:var(--module-unit);border-radius:var(--radius-pill);background:var(--code-bar)}
+.t{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink)}
+.s{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px}
+</style>
+<div class="c" data-slug="fitness-app"><div class="fp"></div><div class="t">Fitness aplikácia</div><div class="s">fitness-app</div></div>
+<div class="c" data-slug="vzdelavacia-platforma"><div class="fp"></div><div class="t">Vzdelávacia platforma</div><div class="s">vzdelavacia-platforma</div></div>
+<div class="c" data-slug="cee-platforma"><div class="fp"></div><div class="t">CEE platforma</div><div class="s">cee-platforma</div></div>
+</div>
+<script>
+function hash(s){let h=2166136261;for(const ch of s){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){let x=seed||1;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return (x>>>0)/4294967296}}
+document.querySelectorAll('[data-slug]').forEach(c=>{const r=rng(hash(c.dataset.slug));let h='';
+for(let row=0;row<7;row++){const ind=Math.floor(r()*3),n=1+Math.floor(r()*3),acc=r()<.45?Math.floor(r()*n):-1;let s='';
+const kinds=[...Array(n)].map(()=>r()<.5?'unit':'pill');if(!kinds.includes('pill'))kinds[Math.floor(r()*n)]='pill';
+for(let k=0;k<n;k++){s+='<span class="b" style="width:var(--module-'+kinds[k]+');'+(k===acc?'background:var(--accent)':'')+'"></span>'}
+h+='<div class="ln" style="padding-left:calc(var(--module-indent) * '+ind+')">'+s+'</div>'}
+c.querySelector('.fp').innerHTML=h});
+</script>

@@ -1,0 +1,19 @@
+<!-- @dsCard group="Hravé momenty" height=200 subtitle="Čísla sa dopíšu ako výstup programu" -->
+<div style="background:var(--bg);padding:28px;border-radius:var(--radius-lg);display:flex;gap:var(--space-4);flex-wrap:wrap">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.n{font-family:var(--font-mono);font-size:32px;line-height:1.1;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.u{color:var(--ink)}
+.l{font-family:var(--font-body);font-size:14px;line-height:1.5;color:var(--muted);margin-top:8px;max-width:150px}
+</style>
+<div><div class="n"><span data-to="24">24</span><span class="u"> h</span></div><div class="l">rámcová cena po prvom hovore</div></div>
+<div><div class="n"><span data-to="7">7</span><span class="u"> dní</span></div><div class="l">prvá verzia v expresnom režime</div></div>
+<div><div class="n"><span data-to="10">10</span><span class="u"> dní</span></div><div class="l">MVP platformy pre CEE</div></div>
+</div>
+<script>
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim();
+const dur=parseFloat(css('dur-slow'))||560;
+const els=[...document.querySelectorAll('[data-to]')];
+function play(){els.forEach((e,k)=>{const to=+e.dataset.to;let s=null;const step=t=>{if(s===null)s=t;const p=Math.min(1,(t-s)/dur);e.textContent=Math.round(to*p);if(p<1)requestAnimationFrame(step)};setTimeout(()=>requestAnimationFrame(step),k*(parseFloat(css('stagger-type'))||120))})}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){play();setInterval(play,3600)}
+</script>

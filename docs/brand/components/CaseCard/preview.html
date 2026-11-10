@@ -1,0 +1,18 @@
+<!-- @dsCard group="Stránka" width=1280 height=420 subtitle="Karty projektov s odtlačkom a jedným číslom" -->
+<div class="db" style="padding:32px 0">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<div class="db-wrap">
+  <div class="db-cases">
+    <a class="db-case" href="#" data-slug="sutazna-platforma"><div class="db-case__fp"></div><span class="label db-muted">Súťažná platforma</span><p class="db-case__metric"><span class="number">10</span><span class="label">dní do spustenia</span></p><p class="db-soft">Prvá verzia bola live, keď už používatelia posielali prihlášky. Ďalšie funkcie sme dopĺňali naživo.</p><div class="db-tags"><span class="db-tag">Next.js</span><span class="db-tag">MVP</span></div><span class="db-case__more"><span class="db-dot"></span>Celý príbeh</span></a>
+    <a class="db-case" href="#" data-slug="fitness-app"><div class="db-case__fp"></div><span class="label db-muted">Aplikácia pre fitness centrá</span><p class="db-case__metric"><span class="number">10+</span><span class="label">mesiacov spolupráce</span></p><p class="db-soft">Web, iOS a Android z jedného kódu. Aplikáciu ďalej rozvíjame.</p><div class="db-tags"><span class="db-tag">Capacitor</span><span class="db-tag">App Store</span></div><span class="db-case__more"><span class="db-dot"></span>Celý príbeh</span></a>
+    <a class="db-case" href="#" data-slug="vzdelavacia-platforma"><div class="db-case__fp"></div><span class="label db-muted">Vzdelávacia platforma</span><p class="db-case__metric"><span class="number">6+</span><span class="label">mesiacov spolupráce</span></p><p class="db-soft">Platforma s obsahom a vyhľadávaním. Pripravujeme spustenie.</p><div class="db-tags"><span class="db-tag">Next.js</span><span class="db-tag">vyhľadávanie</span></div><span class="db-case__more"><span class="db-dot"></span>Celý príbeh</span></a>
+  </div>
+</div>
+</div>
+<script>
+function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(x){x=x||1;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return(x>>>0)/4294967296}}
+function fingerprint(slug,rows){const r=rng(hash(slug));let h='';for(let k=0;k<rows;k++){const n=2+Math.floor(r()*2),ind=Math.floor(r()*3),acc=r()<.45?Math.floor(r()*n):-1;const kinds=[...Array(n)].map(()=>r()<.5?'dot':'pill');if(!kinds.includes('pill'))kinds[Math.floor(r()*n)]='pill';
+h+='<div class="db-row'+(ind?' db-in'+ind:'')+'">'+kinds.map((t,j)=>'<span class="db-'+t+(j===acc?' db-on':'')+'"></span>').join('')+'</div>'}return h}
+document.querySelectorAll('[data-slug]').forEach(c=>{c.querySelector('.db-case__fp').innerHTML=fingerprint(c.dataset.slug,7)});
+</script>

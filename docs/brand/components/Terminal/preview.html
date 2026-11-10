@@ -1,0 +1,20 @@
+<!-- @dsCard group="Hravé momenty" height=280 subtitle="Skrytý terminál, skúste help" -->
+<div style="background:var(--bg);padding:20px;border-radius:var(--radius-lg)">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.term{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-2);font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--ink-soft);height:196px;overflow:auto}
+.out div{white-space:pre-wrap}
+.pr{display:flex;gap:8px;align-items:center}.pr span{color:var(--accent)}
+.pr input{flex:1;background:transparent;border:0;outline:0;color:var(--ink);font:inherit;caret-color:var(--accent)}
+.dim{color:var(--muted)}
+</style>
+<div class="term" id="term"><div class="out" id="out"><div class="dim">doubleb ~ napíšte help a stlačte Enter</div></div>
+<label class="pr"><span>~ $</span><input id="in" aria-label="Príkaz" autocomplete="off" spellcheck="false"></label></div>
+</div>
+<script>
+const C={help:'help      príkazy\ntim       kto robí na projekte\nponuka    čo staviame\nkontakt   kde nás nájdete\nclear     vyčistiť',tim:'Boris a Barbora. Obaja kódia, obaja rozumejú produktu.',ponuka:'Webové a mobilné aplikácie pre tímy bez vlastných vývojárov.',kontakt:'ahoj@doubleb.example  (zástupná adresa)'};
+const out=document.getElementById('out'),inp=document.getElementById('in'),term=document.getElementById('term');
+const add=(t,c)=>{const d=document.createElement('div');if(c)d.className=c;d.textContent=t;out.appendChild(d);term.scrollTop=term.scrollHeight};
+inp.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const v=inp.value.trim().toLowerCase();inp.value='';if(!v)return;add('~ $ '+v);if(v==='clear'){out.innerHTML='';return}add(C[v]||'Príkaz '+v+' nepoznáme. Skúste help.',C[v]?'':'dim')});
+term.addEventListener('click',()=>inp.focus());
+</script>

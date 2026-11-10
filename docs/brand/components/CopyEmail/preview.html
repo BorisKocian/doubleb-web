@@ -1,0 +1,19 @@
+<!-- @dsCard group="Hravé momenty" height=160 subtitle="Klik skopíruje e-mail a palička potvrdí" -->
+<div style="background:var(--bg);padding:28px;border-radius:var(--radius-lg)">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.em{display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:0;cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:28px;line-height:1.2;color:var(--ink)}
+.em:hover .addr,.em:focus-visible .addr{color:var(--accent)}
+.addr{transition:color var(--dur-fast) var(--ease-standard)}
+.st{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.b{display:inline-block;height:var(--module-unit);width:var(--module-unit);border-radius:var(--radius-pill);background:var(--subtle);transition:width var(--dur-mid) var(--ease-standard),background var(--dur-mid) var(--ease-standard)}
+.ok .b{width:var(--module-pill);background:var(--accent)}.ok{color:var(--accent)}
+</style>
+<button class="em" id="em"><span class="addr">ahoj@doubleb.example</span></button>
+<div style="margin-top:12px"><span class="st" id="st" aria-live="polite"><span class="b"></span><span id="tx">kliknutím skopírujete</span></span></div>
+</div>
+<script>
+const em=document.getElementById('em'),st=document.getElementById('st'),tx=document.getElementById('tx');let t;
+em.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(em.textContent.trim())}catch(e){}
+st.classList.add('ok');tx.textContent='skopírované, vložte kamkoľvek';clearTimeout(t);t=setTimeout(()=>{st.classList.remove('ok');tx.textContent='kliknutím skopírujete'},2400)});
+</script>

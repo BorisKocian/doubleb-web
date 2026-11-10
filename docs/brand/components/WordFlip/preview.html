@@ -1,0 +1,26 @@
+<!-- @dsCard group="Hero" height=240 subtitle="Preklápanie slov v hero" -->
+<div style="background:var(--bg);padding:36px 32px;border-radius:var(--radius-lg)">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.hero{font-family:var(--font-display);font-weight:700;font-size:52px;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);perspective:500px;margin:0 0 18px}
+.wrap{display:inline-grid;transform-style:preserve-3d;vertical-align:bottom;color:var(--accent)}
+.w{grid-area:1/1;display:inline-block}
+.sub{font-family:var(--font-body);font-size:20px;line-height:1.55;color:var(--ink-soft);margin:0}
+</style>
+<p class="hero">Kým iní ešte naceňujú, my&nbsp;už <span class="wrap"><span class="w" id="wa">vyvíjame</span><span class="w" id="wb" style="opacity:0" aria-hidden="true"></span></span></p>
+<p class="sub">Rámcovú cenu máte do 24 hodín.</p>
+</div>
+<script>
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim();
+const ms=n=>parseFloat(css(n))||0;
+const W=['vyvíjame','testujeme','nasadzujeme'];
+let i=0,front=document.getElementById('wa'),back=document.getElementById('wb');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+const dep=parseFloat(css('flip-depth'))||80,off=parseFloat(css('flip-offset'))||35,dir=-1;
+back.style.transform='translateZ(-'+dep+'px)';
+const flip=()=>{i=(i+1)%W.length;back.textContent=W[i];const o={duration:ms('dur-flip')||750,easing:css('ease-standard'),fill:'forwards'};
+front.animate([{transform:'translateY(0) translateZ(0)',opacity:1},{transform:'translateY('+(dir*off)+'%) translateZ(-'+dep/2+'px)',opacity:.6,offset:.5},{transform:'translateY(0) translateZ(-'+dep+'px)',opacity:0}],o);
+back.animate([{transform:'translateY(0) translateZ(-'+dep+'px)',opacity:0},{transform:'translateY('+(-dir*off)+'%) translateZ(-'+dep/2+'px)',opacity:.6,offset:.5},{transform:'translateY(0) translateZ(0)',opacity:1}],o);
+front.setAttribute('aria-hidden','true');back.removeAttribute('aria-hidden');const t=front;front=back;back=t};
+setInterval(flip,ms('pause-flip')||2100)}
+</script>

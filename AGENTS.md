@@ -1,3 +1,7 @@
+# Agenti: začnite tu
+
+Kontext projektu, pravidlá a postup sú v `CLAUDE.md`. Prečítajte ho celý pred prvou zmenou, platí pre všetkých agentov.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know

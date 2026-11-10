@@ -1,0 +1,19 @@
+<!-- @dsCard group="Modul" height=220 subtitle="Postup projektu ako git diff" -->
+<div style="background:var(--bg);padding:24px;border-radius:var(--radius-lg)">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.st{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sg{font-family:var(--font-mono);font-size:13px;width:12px;color:var(--accent)}
+.ln{display:flex;align-items:center;gap:var(--module-gap);width:64px}
+.b{display:inline-block;height:var(--module-unit);border-radius:var(--radius-pill);transition:width var(--dur-mid) var(--ease-standard),background var(--dur-mid) var(--ease-standard)}
+.tx{font-family:var(--font-body);font-size:15px;transition:color var(--dur-mid) var(--ease-standard)}
+</style>
+<div id="steps"></div>
+</div>
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const S=['Úvodný hovor','Rámcová cena do 24 h','Potvrdenie','Prvá verzia'];
+const el=document.getElementById('steps');
+function draw(done){el.innerHTML=S.map((s,i)=>{const d=i<done;return '<div class="st"><span class="sg">'+(d?'+':'')+'</span><div class="ln"><span class="b" style="width:var(--module-'+(d?'pill':'unit')+');background:var(--'+(d?'accent':'subtle')+')"></span><span class="b" style="width:var(--module-pill);background:var(--'+(d?'code-bar':'subtle')+')"></span></div><span class="tx" style="color:var(--'+(d?'ink':'muted')+')">'+s+'</span></div>'}).join('')}
+if(reduce){draw(2)}else{let n=0;draw(0);setInterval(()=>draw(++n%5),1400)}
+</script>

@@ -1,0 +1,38 @@
+<!-- @dsCard group="Stránka" height=520 subtitle="Horná lišta: desktop a mobil s otvoreným menu" -->
+<div class="db" style="display:grid;gap:24px;padding-bottom:16px">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<header class="db-nav" style="position:relative">
+  <div class="db-wrap db-nav__in">
+    <a class="db-brand" href="#"><span class="db-mark"><img src="/_blob/a4ca3b51aae466e81070abb93ed708eb" alt=""></span>DoubleB</a>
+    <ul class="db-menu">
+      <li><a href="#">Čo staviame</a></li>
+      <li><a href="#" aria-current="page">Projekty</a></li>
+      <li><a href="#">Ako pracujeme</a></li>
+      <li><a href="#">O nás</a></li>
+    </ul>
+    <a class="db-btn db-btn--primary db-nav__cta" href="#"><span class="db-dot"></span>Napíšte nám</a>
+    <button class="db-burger" aria-label="Menu" aria-expanded="false"><span class="db-row"><span class="db-pill"></span><span class="db-dot db-on"></span></span><span class="db-row"><span class="db-dot"></span><span class="db-pill"></span></span></button>
+  </div>
+</header>
+<div style="max-width:390px;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden">
+  <header class="db-nav db-nav--compact" style="position:relative">
+    <div class="db-wrap db-nav__in" style="padding:0 16px">
+      <a class="db-brand" href="#"><span class="db-mark"><img src="/_blob/a4ca3b51aae466e81070abb93ed708eb" alt=""></span>DoubleB</a>
+      <button class="db-burger" id="bg" aria-label="Menu" aria-expanded="true" aria-controls="dr"><span class="db-row"><span class="db-pill"></span><span class="db-dot db-on"></span></span><span class="db-row"><span class="db-dot"></span><span class="db-pill"></span></span></button>
+    </div>
+  </header>
+  <nav class="db-drawer is-open" id="dr" style="padding-left:16px;padding-right:16px">
+    <ol>
+      <li><a href="#"><span>01</span>Čo staviame</a></li>
+      <li><a href="#"><span>02</span>Projekty</a></li>
+      <li><a href="#"><span>03</span>Ako pracujeme</a></li>
+      <li><a href="#"><span>04</span>O nás</a></li>
+    </ol>
+    <a class="db-btn db-btn--primary db-btn--lg" href="#" style="margin-top:24px"><span class="db-dot"></span>Napíšte nám</a>
+  </nav>
+</div>
+</div>
+<script>
+const b=document.getElementById('bg'),d=document.getElementById('dr');
+b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);d.classList.toggle('is-open',o)});
+</script>

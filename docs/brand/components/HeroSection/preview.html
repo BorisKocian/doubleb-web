@@ -1,0 +1,38 @@
+<!-- @dsCard group="Stránka" width=1280 height=640 subtitle="Úvod stránky: veta, dôkaz, tlačidlá a čísla" -->
+<div class="db">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<section class="db-hero">
+  <div class="db-wrap">
+    <div class="db-hero__grid">
+      <div>
+        <div class="db-eyebrow db-eyebrow--bare"><span class="db-row"><span class="db-dot"></span><span class="db-pill db-on"></span></span><span class="label">vývojárske štúdio zo Žiliny</span></div>
+        <h1 class="hero db-hero__title">Kým iní ešte naceňujú, my&nbsp;už <span class="db-flip"><span id="wa">vyvíjame</span><span id="wb" style="opacity:0" aria-hidden="true"></span></span></h1>
+        <p class="lead db-soft db-measure">Rámcovú cenu máte do 24 hodín. Pri expresných projektoch prvú verziu do 7 dní.</p>
+        <div class="db-hero__actions">
+          <a class="db-btn db-btn--primary db-btn--lg" href="#"><span class="db-dot"></span>Napíšte nám</a>
+          <a class="db-btn db-btn--lg" href="#"><span class="db-dot"></span>Pozrite si projekty</a>
+        </div>
+      </div>
+      <div class="db-minimap" aria-hidden="true" id="mm"></div>
+    </div>
+    <div class="db-proof">
+      <div><p class="number">24 <b>h</b></p><p class="small db-muted">rámcová cena po úvodnom hovore</p></div>
+      <div><p class="number">7 <b>dní</b></p><p class="small db-muted">prvá verzia v expresnom režime</p></div>
+      <div><p class="number">10 <b>dní</b></p><p class="small db-muted">od zadania po spustené MVP súťažnej platformy</p></div>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim();
+const ms=(n,f)=>parseFloat(css(n))||f;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rows=[[0,'pd',1],[1,'dpd',2],[1,'pp',0],[2,'dp',1],[0,'pdp',0],[1,'pd',-1],[2,'dpp',2],[1,'pd',1],[0,'dp',-1],[1,'ppd',1],[2,'pd',0],[0,'dpd',1],[1,'pp',-1],[0,'pd',0]];
+document.getElementById('mm').innerHTML=rows.map(([i,s,a])=>'<div class="db-row db-in'+(i||'')+'" style="'+(i?'':'')+'">'+[...s].map((c,k)=>'<span class="db-'+(c==='p'?'pill':'dot')+(k===a?' db-on':' db-off')+'"></span>').join('')+'</div>').join('');
+const W=['vyvíjame','testujeme','nasadzujeme'];let i=0,f=document.getElementById('wa'),b=document.getElementById('wb');
+if(!reduce){const dep=ms('flip-depth',80),off=parseFloat(css('flip-offset'))||35;b.style.transform='translateZ(-'+dep+'px)';
+setInterval(()=>{i=(i+1)%W.length;b.textContent=W[i];const o={duration:ms('dur-flip',750),easing:css('ease-standard'),fill:'forwards'};
+f.animate([{transform:'translateY(0) translateZ(0)',opacity:1},{transform:'translateY(-'+off+'%) translateZ(-'+dep/2+'px)',opacity:.6,offset:.5},{transform:'translateY(0) translateZ(-'+dep+'px)',opacity:0}],o);
+b.animate([{transform:'translateY(0) translateZ(-'+dep+'px)',opacity:0},{transform:'translateY('+off+'%) translateZ(-'+dep/2+'px)',opacity:.6,offset:.5},{transform:'translateY(0) translateZ(0)',opacity:1}],o);
+f.setAttribute('aria-hidden','true');b.removeAttribute('aria-hidden');[f,b]=[b,f]},ms('pause-flip',2100))}
+</script>

@@ -1,0 +1,167 @@
+<!-- @dsCard group="Stránka" width=1280 height=4000 subtitle="Ukážka celej hlavnej stránky zo systému (štruktúra je návrh)" -->
+<div class="db">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.hp-sr{position:relative;display:inline;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline dashed var(--accent);text-decoration-thickness:3px;text-underline-offset:8px}
+.hp-pop{position:absolute;left:0;top:calc(100% + 14px);display:flex;gap:var(--space-2);padding:var(--space-2);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);opacity:0;transform:translateY(-6px);pointer-events:none;white-space:nowrap;z-index:5;transition:opacity var(--dur-mid) var(--ease-standard),transform var(--dur-mid) var(--ease-standard)}
+.hp-sr:hover .hp-pop,.hp-sr:focus-visible .hp-pop,.hp-sr.open .hp-pop{opacity:1;transform:none}
+.hp-who{display:grid;gap:4px;justify-items:start;font-size:16px;letter-spacing:0}
+.hp-who .db-avatar{width:56px;height:56px;padding:0 10px;gap:4px}
+</style>
+
+<header class="db-nav">
+  <div class="db-wrap db-nav__in">
+    <a class="db-brand" href="#"><span class="db-mark"><img src="/_blob/a4ca3b51aae466e81070abb93ed708eb" alt=""></span>DoubleB</a>
+    <ul class="db-menu"><li><a href="#sluzby">Čo staviame</a></li><li><a href="#projekty">Projekty</a></li><li><a href="#proces">Ako pracujeme</a></li><li><a href="#tim">O nás</a></li></ul>
+    <a class="db-btn db-btn--primary db-nav__cta" href="#kontakt"><span class="db-dot"></span>Napíšte nám</a>
+    <button class="db-burger" aria-label="Menu" aria-expanded="false"><span class="db-row"><span class="db-pill"></span><span class="db-dot db-on"></span></span><span class="db-row"><span class="db-dot"></span><span class="db-pill"></span></span></button>
+  </div>
+</header>
+
+<section class="db-hero">
+  <div class="db-wrap">
+    <div class="db-hero__grid">
+      <div>
+        <div class="db-eyebrow db-eyebrow--bare"><span class="db-row"><span class="db-dot"></span><span class="db-pill db-on"></span></span><span class="label">vývojárske štúdio zo Žiliny</span></div>
+        <h1 class="hero db-hero__title">Kým iní ešte naceňujú, my&nbsp;už <span class="db-flip"><span id="wa">vyvíjame</span><span id="wb" style="opacity:0" aria-hidden="true"></span></span></h1>
+        <p class="lead db-soft db-measure">Rámcovú cenu máte do 24 hodín. Pri expresných projektoch prvú verziu do 7 dní.</p>
+        <div class="db-hero__actions"><a class="db-btn db-btn--primary db-btn--lg" href="#kontakt"><span class="db-dot"></span>Napíšte nám</a><a class="db-btn db-btn--lg" href="#projekty"><span class="db-dot"></span>Pozrite si projekty</a></div>
+      </div>
+      <div class="db-minimap" aria-hidden="true" id="mm"></div>
+    </div>
+    <div class="db-proof">
+      <div><p class="number">24 <b>h</b></p><p class="small db-muted">rámcová cena po úvodnom hovore</p></div>
+      <div><p class="number">7 <b>dní</b></p><p class="small db-muted">prvá verzia v expresnom režime</p></div>
+      <div><p class="number">10 <b>dní</b></p><p class="small db-muted">od zadania po spustené MVP súťažnej platformy</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="db-section" id="sluzby">
+  <div class="db-wrap">
+    <header class="db-sechead">
+      <div class="db-eyebrow"><span class="db-row"><span class="db-dot"></span><span class="db-pill db-on"></span></span><span class="label">01 / čo staviame</span></div>
+      <h2 class="h1">Aplikácie pre tímy, ktoré nemajú vlastných vývojárov.</h2>
+      <p class="lead">Navrhneme, naprogramujeme a spustíme webovú alebo mobilnú aplikáciu. Potom ju s vami ďalej rozvíjame.</p>
+    </header>
+    <ul class="db-rows">
+      <li><div class="db-rows__no"><span class="db-dot"></span><span class="label">01</span></div><h3 class="h2">Webové aplikácie</h3><div class="db-rows__body"><p class="db-soft">Interné systémy, klientske portály a SaaS. Od prihlásenia po platby a administráciu.</p><div class="db-tags"><span class="db-tag">Next.js</span><span class="db-tag">TypeScript</span></div></div></li>
+      <li><div class="db-rows__no"><span class="db-dot"></span><span class="label">02</span></div><h3 class="h2">Mobilné aplikácie</h3><div class="db-rows__body"><p class="db-soft">Web, iOS aj Android z jedného kódu. Publikovanie v App Store a Google Play riešime za vás.</p><div class="db-tags"><span class="db-tag">Capacitor</span><span class="db-tag">iOS</span><span class="db-tag">Android</span></div></div></li>
+      <li><div class="db-rows__no"><span class="db-dot"></span><span class="label">03</span></div><h3 class="h2">Prvá verzia produktu</h3><div class="db-rows__body"><p class="db-soft">Keď to potrebujete rýchlo. Spustíme to podstatné a ďalšie funkcie dopĺňame naživo podľa používateľov.</p><div class="db-tags"><span class="db-tag">MVP</span><span class="db-tag">expres do 7 dní</span></div></div></li>
+      <li><div class="db-rows__no"><span class="db-dot"></span><span class="label">04</span></div><h3 class="h2">Dlhodobý vývoj</h3><div class="db-rows__body"><p class="db-soft">Ostávame aj po spustení. Vylepšujeme, opravujeme a staráme sa o nasadenie.</p><div class="db-tags"><span class="db-tag">údržba</span><span class="db-tag">nasadenie</span></div></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="db-section" id="projekty" style="padding-top:0">
+  <div class="db-wrap">
+    <header class="db-sechead">
+      <div class="db-eyebrow"><span class="db-row"><span class="db-pill"></span><span class="db-dot db-on"></span></span><span class="label">02 / projekty</span></div>
+      <h2 class="h1">Od MVP za 10 dní po spoluprácu, ktorá trvá viac ako desať mesiacov.</h2>
+    </header>
+    <div class="db-cases">
+      <a class="db-case" href="#" data-slug="sutazna-platforma"><div class="db-case__fp"></div><span class="label db-muted">Súťažná platforma</span><p class="db-case__metric"><span class="number">10</span><span class="label">dní do spustenia</span></p><p class="db-soft">Prvá verzia bola live, keď už používatelia posielali prihlášky. Ďalšie funkcie sme dopĺňali naživo.</p><span class="db-case__more"><span class="db-dot"></span>Celý príbeh</span></a>
+      <a class="db-case" href="#" data-slug="fitness-app"><div class="db-case__fp"></div><span class="label db-muted">Aplikácia pre fitness centrá</span><p class="db-case__metric"><span class="number">10+</span><span class="label">mesiacov spolupráce</span></p><p class="db-soft">Web, iOS a Android z jedného kódu. Aplikáciu ďalej rozvíjame.</p><span class="db-case__more"><span class="db-dot"></span>Celý príbeh</span></a>
+      <a class="db-case" href="#" data-slug="vzdelavacia-platforma"><div class="db-case__fp"></div><span class="label db-muted">Vzdelávacia platforma</span><p class="db-case__metric"><span class="number">6+</span><span class="label">mesiacov spolupráce</span></p><p class="db-soft">Platforma s obsahom a vyhľadávaním. Pripravujeme spustenie.</p><span class="db-case__more"><span class="db-dot"></span>Celý príbeh</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="db-section" id="proces" style="padding-top:0">
+  <div class="db-wrap">
+    <header class="db-sechead">
+      <div class="db-eyebrow"><span class="db-row"><span class="db-dot"></span><span class="db-dot"></span><span class="db-pill db-on"></span></span><span class="label">03 / ako pracujeme</span></div>
+      <h2 class="h1">Každý krok má lehotu. Prvé dva sú zadarmo.</h2>
+    </header>
+    <ol class="db-steps">
+      <li class="db-step db-step--on"><span class="label db-step__when">1. deň</span><h3 class="h2" style="font-size:22px">Úvodný hovor</h3><p class="small db-soft">Prejdeme si, čo má aplikácia robiť a pre koho. Zadarmo.</p></li>
+      <li class="db-step db-step--on"><span class="label db-step__when">do 24 h</span><h3 class="h2" style="font-size:22px">Analýza a rámcová cena</h3><p class="small db-soft">Napíšeme, čo postavíme ako prvé, čo môže počkať a koľko to bude stáť. Tiež zadarmo.</p></li>
+      <li class="db-step db-step--on"><span class="label db-step__when">hneď potom</span><h3 class="h2" style="font-size:22px">Začíname</h3><p class="small db-soft">Na vývoji začneme po potvrdení ceny, aj kým sa dopisuje zmluva.</p></li>
+      <li class="db-step"><span class="label db-step__when">do 7 dní</span><h3 class="h2" style="font-size:22px">Prvá verzia</h3><p class="small db-soft">Pri expresných projektoch. Ďalšie funkcie dopĺňame naživo.</p></li>
+      <li class="db-step"><span class="label db-step__when">potom</span><h3 class="h2" style="font-size:22px">Ostávame</h3><p class="small db-soft">Aplikáciu rozvíjame ďalej. Najdlhšia spolupráca trvá 10+ mesiacov.</p></li>
+    </ol>
+    <div class="db-note"><span class="db-row" style="margin-top:5px"><span class="db-pill db-on"></span><span class="db-dot"></span></span><div style="display:grid;gap:8px"><p class="label db-muted">prečo vieme dať cenu do 24 hodín</p><p class="db-soft db-measure">Rámcovú cenu pripravuje ten z nás, kto bude projekt programovať. Vychádza z hovoru, v ktorom sme si prešli, čo musí vedieť prvá verzia a čo môže počkať.</p></div></div>
+  </div>
+</section>
+
+<section class="db-section" id="tim" style="padding-top:0">
+  <div class="db-wrap">
+    <header class="db-sechead">
+      <div class="db-eyebrow"><span class="db-row"><span class="db-pill db-on"></span><span class="db-pill"></span></span><span class="label">04 / o nás</span></div>
+      <h2 class="h1">Váš produkt pozná <button class="hp-sr" id="sr" aria-expanded="false">celé naše štúdio<span class="hp-pop" role="tooltip"><span class="hp-who"><span class="db-avatar"><span class="db-row"><span class="db-pill db-on"></span></span><span class="db-row"><span class="db-dot"></span><span class="db-pill"></span></span></span><span class="label">Boris</span></span><span class="hp-who"><span class="db-avatar"><span class="db-row"><span class="db-dot"></span><span class="db-pill db-on"></span></span><span class="db-row"><span class="db-pill"></span></span></span><span class="label">Barbora</span></span></span></button>. Obaja.</h2>
+    </header>
+    <div class="db-team">
+      <article class="db-person"><div class="db-avatar" aria-hidden="true"><span class="db-row"><span class="db-dot"></span><span class="db-pill db-on"></span></span><span class="db-row"><span class="db-pill"></span><span class="db-dot"></span></span><span class="db-row db-in1"><span class="db-pill"></span></span></div><div class="db-person__body"><h3 class="h2">Boris</h3><ul class="db-ul"><li>Programuje web aj mobil</li><li>Rozumie produktu</li><li>Hovorí priamo s klientom</li><li>Pozná celý projekt</li></ul></div></article>
+      <article class="db-person"><div class="db-avatar" aria-hidden="true"><span class="db-row"><span class="db-pill"></span><span class="db-dot db-on"></span></span><span class="db-row db-in1"><span class="db-dot"></span><span class="db-pill"></span></span><span class="db-row"><span class="db-pill"></span></span></div><div class="db-person__body"><h3 class="h2">Barbora</h3><ul class="db-ul"><li>Programuje web aj mobil</li><li>Rozumie produktu</li><li>Hovorí priamo s klientom</li><li>Pozná celý projekt</li></ul></div></article>
+    </div>
+    <p class="h2 db-measure" style="margin-top:32px">Áno, zoznamy sú rovnaké. Keď jeden z nás chýba, druhý pokračuje bez odovzdávania.</p>
+  </div>
+</section>
+
+<section class="db-section" style="padding-top:0">
+  <div class="db-wrap">
+    <header class="db-sechead">
+      <div class="db-eyebrow"><span class="db-row"><span class="db-dot db-on"></span><span class="db-pill"></span></span><span class="label">05 / otázky</span></div>
+      <h2 class="h1">Čo sa zvykne pýtať pred prvým hovorom.</h2>
+    </header>
+    <div class="db-faq">
+      <details open><summary>Ako viete dať cenu do 24 hodín?</summary><p class="db-faq__a">Po úvodnom hovore vieme, čo musí vedieť prvá verzia a čo môže počkať. Rámcovú cenu z toho pripraví ten z nás, kto bude projekt programovať. Hovor aj analýza sú zadarmo.</p></details>
+      <details><summary>Čo keď jeden z vás ochorie alebo je na dovolenke?</summary><p class="db-faq__a">Projekt pokračuje. Obaja poznáme produkt aj kód celého projektu, takže nič neodovzdávame a vy na nikoho nečakáte.</p></details>
+      <details><summary>Komu patrí kód?</summary><p class="db-faq__a">Vám. Kód aj dokumentácia sú vaše.</p></details>
+      <details><summary>Robíte aj prezentačné weby?</summary><p class="db-faq__a">Len ako súčasť väčšieho projektu. Zameriavame sa na webové a mobilné aplikácie.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="db-section" id="kontakt" style="padding-top:0">
+  <div class="db-wrap">
+    <div class="db-eyebrow" style="margin-bottom:var(--space-4)"><span class="db-row"><span class="db-pill"></span><span class="db-pill db-on"></span></span><span class="label">06 / kontakt</span></div>
+    <div class="db-contact">
+      <div style="display:grid;gap:24px">
+        <h2 class="h1">Napíšte, čo potrebujete postaviť.</h2>
+        <p class="lead db-soft">Ozveme sa a dohodneme krátky hovor. Do 24 hodín po ňom máte analýzu a rámcovú cenu.</p>
+        <div style="display:grid;gap:8px;margin-top:16px"><p class="label db-muted">alebo rovno e-mail</p><button class="db-link" id="em" style="background:none;border:0;padding:0;cursor:pointer;justify-self:start;font-family:var(--font-display);font-weight:700;font-size:28px">ahoj@doubleb.example</button><span class="label db-muted" id="st" aria-live="polite">kliknutím skopírujete</span></div>
+      </div>
+      <form class="db-form" onsubmit="event.preventDefault()">
+        <div class="db-field"><label class="label" for="n">Meno</label><input class="db-input" id="n" autocomplete="name"></div>
+        <div class="db-field"><label class="label" for="e">E-mail</label><input class="db-input" id="e" type="email" autocomplete="email"></div>
+        <div class="db-field"><label class="label" for="d">Čo má aplikácia robiť?</label><textarea class="db-input" id="d" placeholder="Pár viet stačí. Pre koho je, čo v nej bude najdôležitejšie a dokedy ju potrebujete."></textarea></div>
+        <fieldset class="db-field"><legend class="label">Termín</legend><div class="db-chips" id="ch"><button type="button" class="db-chip" aria-pressed="true">Čím skôr</button><button type="button" class="db-chip" aria-pressed="false">Do mesiaca</button><button type="button" class="db-chip" aria-pressed="false">Ešte neviem</button></div></fieldset>
+        <div><button class="db-btn db-btn--primary db-btn--lg" type="submit"><span class="db-dot"></span>Odoslať zadanie</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="db-footer">
+  <div class="db-wrap">
+    <div class="db-footer__grid">
+      <div style="display:grid;gap:12px;align-content:start"><a class="db-brand" href="#"><span class="db-mark"><img src="/_blob/a4ca3b51aae466e81070abb93ed708eb" alt=""></span>DoubleB</a><p class="small db-muted" style="max-width:320px">Vývojárske štúdio zo Žiliny. Webové a mobilné aplikácie pre tímy bez vlastných vývojárov.</p></div>
+      <div style="display:grid;gap:12px;align-content:start"><p class="label db-muted">stránka</p><ul><li><a href="#sluzby">Čo staviame</a></li><li><a href="#projekty">Projekty</a></li><li><a href="#proces">Ako pracujeme</a></li><li><a href="#tim">O nás</a></li></ul></div>
+      <div style="display:grid;gap:12px;align-content:start"><p class="label db-muted">kontakt</p><ul><li><a href="#">ahoj@doubleb.example</a></li><li><a href="#">LinkedIn</a></li><li><span class="small db-muted">DoubleB dev s.r.o., Žilina</span></li></ul></div>
+    </div>
+    <div class="db-footer__bottom"><span class="label">© 2026 DoubleB dev s.r.o.</span><a class="label" href="#" style="display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none"><span style="color:var(--accent)">~ $</span>stlačte / pre terminál</a></div>
+  </div>
+</footer>
+</div>
+<script>
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim();
+const ms=(n,f)=>parseFloat(css(n))||f;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rows=[[0,'pd',1],[1,'dpd',2],[1,'pp',0],[2,'dp',1],[0,'pdp',0],[1,'pd',-1],[2,'dpp',2],[1,'pd',1],[0,'dp',-1],[1,'ppd',1],[2,'pd',0],[0,'dpd',1],[1,'pp',-1],[0,'pd',0]];
+document.getElementById('mm').innerHTML=rows.map(([i,s,a])=>'<div class="db-row'+(i?' db-in'+i:'')+'">'+[...s].map((c,k)=>'<span class="db-'+(c==='p'?'pill':'dot')+(k===a?' db-on':' db-off')+'"></span>').join('')+'</div>').join('');
+function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(x){x=x||1;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return(x>>>0)/4294967296}}
+function fingerprint(slug,n){const r=rng(hash(slug));let h='';for(let k=0;k<n;k++){const c=2+Math.floor(r()*2),ind=Math.floor(r()*3),acc=r()<.45?Math.floor(r()*c):-1;const kinds=[...Array(c)].map(()=>r()<.5?'dot':'pill');if(!kinds.includes('pill'))kinds[Math.floor(r()*c)]='pill';h+='<div class="db-row'+(ind?' db-in'+ind:'')+'">'+kinds.map((t,j)=>'<span class="db-'+t+(j===acc?' db-on':'')+'"></span>').join('')+'</div>'}return h}
+document.querySelectorAll('[data-slug]').forEach(c=>{c.querySelector('.db-case__fp').innerHTML=fingerprint(c.dataset.slug,7)});
+const W=['vyvíjame','testujeme','nasadzujeme'];let wi=0,f=document.getElementById('wa'),b=document.getElementById('wb');
+if(!reduce){const dep=ms('flip-depth',80),off=parseFloat(css('flip-offset'))||35;b.style.transform='translateZ(-'+dep+'px)';
+setInterval(()=>{wi=(wi+1)%W.length;b.textContent=W[wi];const o={duration:ms('dur-flip',750),easing:css('ease-standard'),fill:'forwards'};
+f.animate([{transform:'translateY(0) translateZ(0)',opacity:1},{transform:'translateY(-'+off+'%) translateZ(-'+dep/2+'px)',opacity:.6,offset:.5},{transform:'translateY(0) translateZ(-'+dep+'px)',opacity:0}],o);
+b.animate([{transform:'translateY(0) translateZ(-'+dep+'px)',opacity:0},{transform:'translateY('+off+'%) translateZ(-'+dep/2+'px)',opacity:.6,offset:.5},{transform:'translateY(0) translateZ(0)',opacity:1}],o);
+f.setAttribute('aria-hidden','true');b.removeAttribute('aria-hidden');[f,b]=[b,f]},ms('pause-flip',2100))}
+const sr=document.getElementById('sr');sr.addEventListener('click',()=>{const o=sr.classList.toggle('open');sr.setAttribute('aria-expanded',o)});
+document.querySelectorAll('#ch .db-chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('#ch .db-chip').forEach(x=>x.setAttribute('aria-pressed',x===c))}));
+const em=document.getElementById('em'),st=document.getElementById('st');let t;
+em.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(em.textContent.trim())}catch(e){}st.textContent='skopírované';st.style.color='var(--accent)';clearTimeout(t);t=setTimeout(()=>{st.textContent='kliknutím skopírujete';st.style.color=''},2400)});
+</script>

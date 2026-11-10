@@ -1,0 +1,21 @@
+<!-- @dsCard group="Modul" height=200 subtitle="Karta sa najprv napíše ako kód" -->
+<div style="background:var(--bg);padding:24px;border-radius:var(--radius-lg)">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-3);min-height:118px;max-width:360px}
+.ln{display:flex;align-items:center;gap:var(--module-gap);margin-bottom:calc(var(--module-unit) * .6)}
+.b{display:inline-block;height:var(--module-unit);border-radius:var(--radius-pill);background:var(--subtle);opacity:0}
+</style>
+<div class="card" id="card"></div>
+</div>
+<script>
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim();
+const ms=n=>parseFloat(css(n))||0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const card=document.getElementById('card');
+const rows=[[0,[1,2]],[1,[2,1,1]],[1,[1,2,1,2]],[0,[2,1]]];
+function content(){card.innerHTML='<p style="font-family:var(--font-mono);font-size:13px;color:var(--accent);margin:0 0 6px">Projekt</p><p style="font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--ink);margin:0 0 6px">Aplikácia pre fitness centrá</p><p style="font-family:var(--font-body);font-size:14px;color:var(--muted);margin:0">Web, iOS a Android. Spolupráca 10+ mesiacov.</p>'}
+function skeleton(){card.innerHTML=rows.map(([ind,ls])=>'<div class="ln" style="padding-left:calc(var(--module-indent) * '+ind+')">'+ls.map(l=>'<span class="b" style="width:var(--module-'+(l===1?'unit':'pill')+')"></span>').join('')+'</div>').join('');
+let i=0;card.querySelectorAll('.b').forEach(b=>b.animate([{opacity:0},{opacity:1}],{duration:ms('dur-fast'),delay:(i++)*ms('stagger-type'),fill:'forwards',easing:css('ease-standard')}))}
+if(reduce){content()}else{let s=0;const tick=()=>{(s++%2===0)?skeleton():content()};tick();setInterval(tick,3200)}
+</script>

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Stránka" width=1280 height=640 subtitle="Kontakt: formulár so stavmi a e-mail na klik" -->
+<div class="db" style="padding:40px 0">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<div class="db-wrap db-contact">
+  <div style="display:grid;gap:24px">
+    <h2 class="h1">Napíšte, čo potrebujete postaviť.</h2>
+    <p class="lead db-soft">Ozveme sa a dohodneme krátky hovor. Do 24 hodín po ňom máte analýzu a rámcovú cenu.</p>
+    <div style="display:grid;gap:8px;margin-top:16px"><p class="label db-muted">alebo rovno e-mail</p><button class="db-link" id="em" style="background:none;border:0;padding:0;cursor:pointer;justify-self:start;font-family:var(--font-display);font-weight:700;font-size:28px">ahoj@doubleb.example</button><span class="label db-muted" id="st" aria-live="polite">kliknutím skopírujete</span></div>
+  </div>
+  <form class="db-form" onsubmit="event.preventDefault()">
+    <div class="db-field"><label class="label" for="n">Meno</label><input class="db-input" id="n" value="Jana Nováková"></div>
+    <div class="db-field db-field--error"><label class="label" for="e">E-mail</label><input class="db-input" id="e" value="jana@" aria-invalid="true" aria-describedby="em-err"><span class="label db-field__msg" id="em-err">// e-mail je neúplný, chýba časť za @</span></div>
+    <div class="db-field"><label class="label" for="d">Čo má aplikácia robiť?</label><textarea class="db-input" id="d" placeholder="Pár viet stačí. Pre koho je, čo v nej bude najdôležitejšie a dokedy ju potrebujete."></textarea></div>
+    <fieldset class="db-field"><legend class="label">Termín</legend><div class="db-chips" id="ch"><button type="button" class="db-chip" aria-pressed="true">Čím skôr</button><button type="button" class="db-chip" aria-pressed="false">Do mesiaca</button><button type="button" class="db-chip" aria-pressed="false">Ešte neviem</button></div></fieldset>
+    <div><button class="db-btn db-btn--primary db-btn--lg" type="submit"><span class="db-dot"></span>Odoslať zadanie</button></div>
+  </form>
+</div>
+</div>
+<script>
+document.querySelectorAll('#ch .db-chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('#ch .db-chip').forEach(x=>x.setAttribute('aria-pressed',x===c))}));
+const em=document.getElementById('em'),st=document.getElementById('st');let t;
+em.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(em.textContent.trim())}catch(e){}st.textContent='skopírované';st.style.color='var(--accent)';clearTimeout(t);t=setTimeout(()=>{st.textContent='kliknutím skopírujete';st.style.color=''},2400)});
+</script>

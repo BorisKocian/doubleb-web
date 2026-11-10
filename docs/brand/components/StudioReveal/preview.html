@@ -1,0 +1,23 @@
+<!-- @dsCard group="Hravé momenty" height=260 subtitle="Prejdite myšou na „celé naše štúdio“" -->
+<div style="background:var(--bg);padding:32px;border-radius:var(--radius-lg);min-height:196px">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+.p{font-family:var(--font-body);font-size:20px;line-height:1.55;color:var(--ink-soft);margin:0;max-width:560px}
+.tr{position:relative;display:inline-block;color:var(--ink);cursor:pointer;border:0;background:none;font:inherit;padding:0;text-decoration:underline dashed var(--accent);text-underline-offset:5px;text-decoration-thickness:2px}
+.pop{position:absolute;left:0;top:calc(100% + 10px);display:flex;gap:var(--space-2);padding:var(--space-2);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity var(--dur-mid) var(--ease-standard),transform var(--dur-mid) var(--ease-standard);white-space:nowrap;z-index:2}
+.tr:hover .pop,.tr:focus-visible .pop,.tr.open .pop{opacity:1;transform:none}
+.who{display:grid;gap:8px;justify-items:start}
+.av{width:56px;height:56px;border-radius:var(--radius-md);background:var(--bg);display:grid;align-content:center;gap:4px;padding:0 10px}
+.ln{display:flex;gap:var(--module-gap)}.b{height:var(--module-unit);border-radius:var(--radius-pill);background:var(--code-bar)}
+.nm{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink)}
+.rl{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+</style>
+<p class="p">Na projekte pracuje <button class="tr" id="tr" aria-expanded="false">celé naše štúdio<span class="pop" role="tooltip">
+<span class="who"><span class="av"><span class="ln"><span class="b" style="width:var(--module-pill);background:var(--accent)"></span></span><span class="ln"><span class="b" style="width:var(--module-unit)"></span><span class="b" style="width:var(--module-unit)"></span></span></span><span class="nm">Boris</span><span class="rl">kód a produkt</span></span>
+<span class="who"><span class="av"><span class="ln"><span class="b" style="width:var(--module-unit)"></span><span class="b" style="width:var(--module-unit);background:var(--accent)"></span></span><span class="ln"><span class="b" style="width:var(--module-pill)"></span></span></span><span class="nm">Barbora</span><span class="rl">kód a produkt</span></span>
+</span></button>. Obaja.</p>
+</div>
+<script>
+const t=document.getElementById('tr');
+t.addEventListener('click',()=>{const o=t.classList.toggle('open');t.setAttribute('aria-expanded',o)});
+</script>

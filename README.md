@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# doubleb-web
 
-## Getting Started
+Web vývojárskeho štúdia DoubleB dev s.r.o. zo Žiliny. Next.js 16, TypeScript, čisté CSS s tokenmi z nášho design systému.
 
-First, run the development server:
+Prvá verzia musí byť hotová pred finále CEE Startup Voucher, 12. 11. 2026.
 
-```bash
+## Spustenie
+
+```
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Web beží na http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Kde čo je
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Čo | Kde |
+| --- | --- |
+| Čo stavať a všetky texty v1 | `docs/web-v1.md` |
+| Pravidlá značky (farby, písmo, modul, pohyb, hlas) | `docs/brand/README.md` |
+| Komponenty: pravidlá a referenčné ukážky | `docs/brand/components/` |
+| Positioning, čo smieme povedať o klientoch | `docs/decisions.md` |
+| Checklist pred spustením | `docs/launch-checklist.md` |
+| Analýza konkurencie | `docs/research/competitors-report.md` |
+| Údaje o firme a zástupné hodnoty | `src/config/site.ts` |
+| Tokeny (generované) a štýly komponentov | `src/styles/` |
+| Pokyny pre Claude Code a iných agentov | `CLAUDE.md`, `AGENTS.md` |
 
-## Learn More
+## Práca s Claude Code
 
-To learn more about Next.js, take a look at the following resources:
+Otvorte priečinok v Claude Code a napíšte napríklad: „Postav hlavnú stránku podľa docs/web-v1.md, začni hlavičkou a hero.“ Všetko potrebné si prečíta z `CLAUDE.md`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tokeny
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Farby, písmo, medzery a pohyb sú v `docs/brand/tokens.json`. Po zmene spustite `npm run tokens`, ktorý prepíše `src/styles/tokens.css`. Ten súbor needitujte ručne.
 
-## Deploy on Vercel
+## Zdroje mimo repozitára
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Design system DoubleB (živé ukážky): https://claude.ai/artifact/LTVjoYz9dZ2TLDAyrUfhB6
+- Dokument so štruktúrou a textami v1: https://claude.ai/artifact/3wSpUQuoWUNBxrRTAuor5g
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Od vytvorenia repozitára platí za zdroj pravdy `docs/` v repozitári.

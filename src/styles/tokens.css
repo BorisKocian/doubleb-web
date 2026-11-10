@@ -1,0 +1,78 @@
+/* DoubleB: generované z docs/brand/tokens.json (npm run tokens). Needitovať ručne. */
+
+:root,
+[data-theme="tichy"] {
+  --bg: #000000;
+  --surface: #0D0D0D;
+  --ink: #E8EAE8;
+  --ink-soft: #B7BDB9;
+  --muted: #9AA19C;
+  --subtle: #3A3D3B;
+  --line: #222222;
+  --accent: #00FF00;
+  --on-accent: #000000;
+  --code-bar: var(--ink);
+}
+
+[data-theme="hlasny"] {
+  --bg: #00FF00;
+  --surface: #00E000;
+  --ink: #000000;
+  --ink-soft: #0F2E0F;
+  --muted: #1A4D1A;
+  --subtle: #00A800;
+  --line: #00B800;
+  --accent: #000000;
+  --on-accent: #00FF00;
+  --code-bar: var(--ink);
+}
+
+:root {
+  /* spacing */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 48px;
+  --space-5: 96px;
+  /* radius */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  /* layout */
+  --layout-max: 1200px;
+  --layout-gutter: 24px;
+  --nav-height: 72px;
+  /* module */
+  --module-unit: 8px;
+  --module-gap: 2px;
+  --module-pill: 18px;
+  --module-indent: 10px;
+  --module-unit-lg: 24px;
+  --module-gap-lg: 6px;
+  --module-pill-lg: 54px;
+  --module-radius-lg: 12px;
+  /* duration */
+  --dur-fast: 120ms;
+  --dur-mid: 240ms;
+  --dur-slow: 560ms;
+  --dur-flip: 750ms;
+  --pause-flip: 2100ms;
+  --stagger-type: 120ms;
+  /* easing */
+  --ease-standard: cubic-bezier(0.6, 0, 0.3, 1);
+  /* flip */
+  --flip-depth: 80px;
+  --flip-offset: 35%;
+  --font-display: "Schibsted Grotesk", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.hero { font-family: var(--font-display); font-size: 64px; line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+.h1 { font-family: var(--font-display); font-size: 44px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
+.h2 { font-family: var(--font-display); font-size: 28px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+.lead { font-family: var(--font-body); font-size: 20px; line-height: 1.55; font-weight: 400; }
+.body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; font-weight: 400; }
+.small { font-family: var(--font-body); font-size: 14px; line-height: 1.5; font-weight: 400; }
+.number { font-family: var(--font-mono); font-size: 32px; line-height: 1.1; font-weight: 500; }
+.label { font-family: var(--font-mono); font-size: 13px; line-height: 1.4; font-weight: 500; letter-spacing: 0.02em; }
