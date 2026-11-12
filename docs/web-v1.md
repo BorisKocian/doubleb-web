@@ -43,7 +43,7 @@ Komponent v zátvorke odkazuje na `docs/brand/components/<Názov>/` (README s pr
 - Znak (orezaný JPG, trieda `db-mark`) a wordmark DoubleB.
 - Menu podľa mapy vyššie, aktuálna sekcia pri scrollovaní má `aria-current`.
 - Mobil: ikona z dvoch riadkov kódu, menu cez celú obrazovku s číslovanými odkazmi.
-- Mobil: keď hero zmizne z obrazovky, dole sa objaví lepiace tlačidlo „Napíšte nám“. Pláva samo, bez lišty, okolo neho je vidno stránku. Od spodného okraja je zdvihnuté o `space-4`, aby Safari nezafarbilo svoju lištu jeho zelenou. Keď je na obrazovke kontakt alebo pätička, tlačidlo sa skryje.
+- Mobil: keď hero zmizne z obrazovky, dole sa objaví lepiace tlačidlo „Napíšte nám“. Pláva samo, bez lišty, na stred a široké podľa textu, `space-2` nad spodným okrajom. Okolo neho je vidno stránku. Cez celú šírku nesiaha, aby Safari nezafarbilo svoju lištu jeho zelenou. Keď je na obrazovke kontakt alebo pätička, tlačidlo sa skryje.
 
 ### 1. Hero (HeroSection, WordFlip, PlayedNumber)
 
@@ -207,7 +207,7 @@ Hravé prvky na mobile:
 - Celé naše štúdio: otvorí sa ťuknutím a zavrie ďalším. Karta s fotkami je pod textom, nikdy cezň.
 - Odohrané čísla: prehrajú sa raz, keď sa pás prvýkrát objaví na obrazovke.
 - Bodka na paličku: na mobile pri stlačení tlačidla, nie pri prejdení myšou.
-- Žiara pozadia: na desktope modul pozadia zozelenie okolo kurzora. Na mobile zozelenie pod prstom pri ťuknutí aj pri scrollovaní, výraznejšie a s hrubšou čiarou než na desktope, aby bolo vidno okolo prsta. Drží sa, kým je prst na displeji a kým stránka po švihnutí ešte ide, potom ostane `dur-mid` a za `dur-slow` dohasne. Ťuknutie na odkaz, tlačidlo alebo pole formulára žiaru nespustí.
+- Žiara pozadia: na desktope modul pozadia zozelenie okolo kurzora. Na mobile každý dotyk (ťuknutie aj začiatok scrollu) pustí pod prstom krátku vlnu: nábeh za `dur-fast`, dohasnutie za `dur-slow`, počas dohasínania sa mierne rozšíri. Vlna je vždy rovnaká, nezávisí od dĺžky dotyku a pri opakovanom švihnutí z jedného miesta sa pustí znova od aktuálnej úrovne, takže nebliká. Ťuknutie na odkaz, tlačidlo alebo pole formulára žiaru nespustí.
 - E-mail: na desktope klik skopíruje adresu, na mobile ťuknutie otvorí poštu.
 - Všetko klikateľné má aspoň 44 px na výšku, polia formulára písmo aspoň 16 px, inak iPhone pri písaní priblíži stránku.
 - Pri zapnutom obmedzení pohybu sa nič nepreklápa ani neprehráva.

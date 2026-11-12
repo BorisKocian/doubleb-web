@@ -11,11 +11,12 @@ const STROKE = 0.6;
 const BASE_ALPHA = 0.016;
 const CURSOR_R = 210;
 const CURSOR_BOOST = 0.25;
-// Mobil: žiara pod prstom (ťuknutie aj scroll). Silnejšia a s hrubšou čiarou než kurzor,
-// lebo stred zakrýva prst a na malom displeji by tenké obrysy neboli vidno.
+// Mobil: každý dotyk (ťuknutie aj začiatok scrollu) pustí krátku vlnu. Stred zakrýva prst,
+// preto má vlna hrubšiu čiaru než kurzor a počas dohasínania sa rozšíri.
 const TOUCH_R = 150;
-const TOUCH_BOOST = 0.55;
-const TOUCH_STROKE = 1.2;
+const TOUCH_R_START = 0.7;
+const TOUCH_BOOST = 0.38;
+const TOUCH_STROKE = 1;
 const INTERACTIVE = "a,button,input,textarea,select,label,summary,[role='button'],[role='tab']";
 
 // Tokeny trvania v ms. Minifikátor CSS ich v builde prepíše na sekundy (240ms → .24s).
@@ -47,16 +48,39 @@ export function BackgroundCanvas() {
     let rafPending = false;
     let isTouch = false;
 
-    // Žiara pod prstom: drží sa, kým je prst na displeji a kým stránka po švihnutí ešte ide.
-    // Potom ostane --dur-mid a za --dur-slow dohasne.
+    // Vlna: nábeh za --dur-fast, dohasnutie za --dur-slow. Je rovnaká pri ťuknutí aj pri
+    // scrollovaní a nezávisí od toho, ako dlho prst drží. Nový dotyk ju pustí znova od
+    // aktuálnej úrovne, takže opakované švihnutia z jedného miesta neblikajú.
     const styles = getComputedStyle(canvas);
-    const holdMs = durationMs(styles, "--dur-mid", 240);
+    const riseMs = durationMs(styles, "--dur-fast", 120);
     const fadeMs = durationMs(styles, "--dur-slow", 560);
     let touchX = -9999;
     let touchY = -9999;
-    let touchDown = false;
-    let touchReleasedAt = 0;
+    let waveStart = -Infinity;
+    let waveFrom = 0;
+    let wavePending = false;
     let touchGlow = 0;
+    let touchR = TOUCH_R;
+
+    function waveLevel(now: number) {
+      const t = now - waveStart;
+      if (t < 0 || t >= riseMs + fadeMs) return 0;
+      if (t < riseMs) {
+        const k = t / riseMs;
+        return waveFrom + (1 - waveFrom) * (1 - (1 - k) * (1 - k));
+      }
+      const k = 1 - (t - riseMs) / fadeMs;
+      return k * k;
+    }
+
+    function startWave(x: number, y: number) {
+      const now = performance.now();
+      waveFrom = waveLevel(now);
+      waveStart = now;
+      touchX = x;
+      touchY = y;
+      scheduleRedraw();
+    }
 
     function resize() {
       if (!canvas) return;
@@ -75,12 +99,10 @@ export function BackgroundCanvas() {
       const H = window.innerHeight;
       ctx.clearRect(0, 0, W, H);
 
-      if (touchDown) {
-        touchGlow = 1;
-      } else if (touchGlow > 0) {
-        const t = Math.min(1, Math.max(0, performance.now() - touchReleasedAt - holdMs) / fadeMs);
-        touchGlow = (1 - t) * (1 - t);
-      }
+      const now = performance.now();
+      touchGlow = waveLevel(now);
+      const progress = Math.min(1, Math.max(0, (now - waveStart) / (riseMs + fadeMs)));
+      touchR = TOUCH_R * (TOUCH_R_START + (1 - TOUCH_R_START) * progress);
 
       const cols = Math.ceil(W / GRID) + 2;
       const rows = Math.ceil(H / GRID) + 2;
@@ -99,7 +121,7 @@ export function BackgroundCanvas() {
             ? 0
             : Math.max(0, 1 - Math.hypot(cx - cursorX, cy - cursorY) / CURSOR_R);
           const touchProximity = touchGlow > 0
-            ? Math.max(0, 1 - Math.hypot(cx - touchX, cy - touchY) / TOUCH_R) * touchGlow
+            ? Math.max(0, 1 - Math.hypot(cx - touchX, cy - touchY) / touchR) * touchGlow
             : 0;
           const boost = proximity * CURSOR_BOOST + touchProximity * TOUCH_BOOST;
           const alpha = BASE_ALPHA + boost;
@@ -120,8 +142,8 @@ export function BackgroundCanvas() {
         }
       }
       rafPending = false;
-      // Kým žiara dohasína, kreslí sa ďalej; potom slučka stojí.
-      if (!touchDown && touchGlow > 0) scheduleRedraw();
+      // Kým vlna beží, kreslí sa ďalej; potom slučka stojí.
+      if (touchGlow > 0) scheduleRedraw();
     }
 
     function scheduleRedraw() {
@@ -147,32 +169,28 @@ export function BackgroundCanvas() {
       if (!t) return;
       isTouch = true;
       const target = e.target instanceof Element ? e.target : null;
-      if (target?.closest(INTERACTIVE)) return;
-      touchDown = true;
-      touchX = t.clientX;
-      touchY = t.clientY;
-      scheduleRedraw();
+      // Ťuknutie na odkaz či tlačidlo vlnu nepustí, scroll začatý na ňom áno.
+      if (target?.closest(INTERACTIVE)) {
+        wavePending = true;
+        return;
+      }
+      wavePending = false;
+      startWave(t.clientX, t.clientY);
     }
 
     function onTouchMove(e: TouchEvent) {
       const t = e.touches[0];
       if (!t) return;
-      touchDown = true;
+      if (wavePending) {
+        wavePending = false;
+        startWave(t.clientX, t.clientY);
+        return;
+      }
+      // Vlna ide za prstom, kým beží; pohyb prsta ju nepredĺži.
+      if (touchGlow <= 0) return;
       touchX = t.clientX;
       touchY = t.clientY;
       scheduleRedraw();
-    }
-
-    function onTouchEnd(e: TouchEvent) {
-      if (e.touches.length > 0 || !touchDown) return;
-      touchDown = false;
-      touchReleasedAt = performance.now();
-      scheduleRedraw();
-    }
-
-    function onScroll() {
-      // Dobeh po švihnutí: kým sa stránka hýbe, žiara nezačne dohasínať.
-      if (!touchDown && touchGlow > 0) touchReleasedAt = performance.now();
     }
 
     function onPointerLeave() {
@@ -188,9 +206,6 @@ export function BackgroundCanvas() {
       window.addEventListener("pointerleave", onPointerLeave, { passive: true });
       window.addEventListener("touchstart", onTouchStart, { passive: true });
       window.addEventListener("touchmove", onTouchMove, { passive: true });
-      window.addEventListener("touchend", onTouchEnd, { passive: true });
-      window.addEventListener("touchcancel", onTouchEnd, { passive: true });
-      window.addEventListener("scroll", onScroll, { passive: true });
     }
     window.addEventListener("resize", resize, { passive: true });
 
@@ -199,9 +214,6 @@ export function BackgroundCanvas() {
       window.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
-      window.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("touchcancel", onTouchEnd);
-      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
     };
   }, []);
