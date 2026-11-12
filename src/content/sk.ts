@@ -80,7 +80,7 @@ export const content = {
         slug: "cee",
         tab: "01 / platforma súťaže",
         type: "platforma na prihlášky a hodnotenie súťaže CEE Startup Voucher, pre MSIC a Inoviu",
-        title: "Prihlášky do CEE Startup Voucher sme spustili 10 dní po prvom hovore.",
+        title: "Prihlášky do CEE Startup Voucher",
         desc: "Za 10 dní sme z prvých hovorov definovali MVP, postavili ho, otestovali a spustili, takže prihlášky sa otvorili načas. Ďalšie dva mesiace sme pridávali hodnotenie s pomocou AI, porotu a viac kôl súťaže.",
         metrics: [
           { value: "10", unit: "dní", label: "od prvého hovoru po spustenie prihlášok" },

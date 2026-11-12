@@ -7,6 +7,7 @@ import { ProcessSection } from "@/components/ProcessSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { MobileCta } from "@/components/MobileCta";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <MobileCta />
     </div>
   );
 }
