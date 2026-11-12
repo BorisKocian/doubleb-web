@@ -9,8 +9,7 @@ export const site = {
 
   // TODO: doména ešte nie je. Zmeňte aj NEXT_PUBLIC_SITE_URL v .env.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  // TODO: e-mail ešte nie je.
-  email: "ahoj@doubleb.example",
+  email: "ahoj@doubleb.dev",
   // TODO: doplniť IČO.
   ico: "",
 

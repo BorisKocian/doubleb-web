@@ -9,7 +9,8 @@
   --muted: #9AA19C;
   --subtle: #3A3D3B;
   --line: #222222;
-  --accent: #00FF00;
+  --accent: #32E94D;
+  --accent-strong: #00FF00;
   --on-accent: #000000;
   --code-bar: var(--ink);
 }
@@ -23,6 +24,7 @@
   --subtle: #00A800;
   --line: #00B800;
   --accent: #000000;
+  --accent-strong: #000000;
   --on-accent: #00FF00;
   --code-bar: var(--ink);
 }

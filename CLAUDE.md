@@ -68,7 +68,7 @@ Pri `prefers-reduced-motion: reduce` sa nič nepreklápa ani neprehráva, ukáž
 
 - Texty preber doslova z `docs/web-v1.md`. Nevymýšľaj čísla, klientov, citáty ani funkcie. Klientov nad rámec `docs/decisions.md` nemenuj.
 - Žiadne hex farby v kóde. Len CSS premenné z tokenov (`var(--accent)` a pod.). Zmena tokenu: uprav `docs/brand/tokens.json` a spusti `npm run tokens`.
-- Zelená je len `--accent`. Zelené plochy sú len hlavné tlačidlá.
+- Zelené sú dve: bežný akcent `--accent` (jemne do bielej stlmená zelená, #32E94D) a sýta neónová `--accent-strong` (#00FF00). Neón je len na ploche hlavných tlačidiel; bodky, paličky, čísla, lehoty a preklápané slovo sú `--accent`. Zelené plochy sú len hlavné tlačidlá.
 - Modul: každý riadok má aspoň jednu paličku a najviac jeden prvok v `--accent`. Žiadny raster bodiek v pozadí.
 - Tlačidlá majú `--radius-md`, nikdy nie sú pilulky.
 - Nové texty (hlášky, alt texty, aria-label) píš v hlase značky: na rovinu, bez slov zo zoznamu v `docs/decisions.md`, bez trojslovia, bez „nie X, ale Y“, bez dlhých pomlčiek, bez emoji.

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 614 764" role="img" aria-labelledby="title">
+  <title id="title">DoubleB znak</title>
+
+  <g fill="#FFFFFF">
+    <circle cx="66" cy="66" r="66"/>
+    <rect x="0" y="157" width="286" height="132" rx="66"/>
+    <circle cx="384" cy="223" r="66"/>
+    <circle cx="66" cy="381" r="66"/>
+    <circle cx="548" cy="381" r="66"/>
+    <rect x="0" y="475" width="286" height="132" rx="66"/>
+    <circle cx="384" cy="541" r="66"/>
+    <circle cx="66" cy="698" r="66"/>
+  </g>
+
+  <g fill="#00FF00">
+    <rect x="164" y="0" width="286" height="132" rx="66"/>
+    <circle cx="548" cy="223" r="66"/>
+    <rect x="164" y="315" width="286" height="132" rx="66"/>
+    <circle cx="548" cy="541" r="66"/>
+    <rect x="164" y="632" width="286" height="132" rx="66"/>
+  </g>
+</svg>

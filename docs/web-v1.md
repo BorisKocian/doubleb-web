@@ -10,7 +10,7 @@ Na finále CEE Startup Voucher 12. 11. 2026 (Nová Synagóga, Žilina) spúšťa
 Vo v1 je len to, čo už platí:
 
 - Úvodný hovor je zadarmo.
-- Express: rámcová cena do 24 hodín po hovore, začíname aj pred podpisom, prvá verzia do 7 dní pri menších projektoch, dohodnutý termín garantujeme.
+- Express: rámcová cena do 24 hodín po hovore, začíname aj pred podpisom, prvá verzia do 10 dní pri menších projektoch, dohodnutý termín garantujeme.
 - Štandard: cena a analýza do 48 hodín po hovore.
 - Na formulár odpovedáme do jedného pracovného dňa.
 
@@ -25,7 +25,7 @@ Vo v2: podstránky /express a /postup, platby, pravidlo pre platenú definíciu 
 | / | v1 | Hero, Čo staviame, Projekty, Ako pracujeme, O nás, Kontakt |
 | /ochrana-sukromia | v1 | Formulár a analytika bez cookies |
 | 404 (not-found) | v1 | Riadok kódu s chýbajúcou paličkou |
-| /express | v2 | Čo sa zmestí do 7 dní, cena, najbližší voľný termín |
+| /express | v2 | Čo sa zmestí do 10 dní, cena, najbližší voľný termín |
 | /postup | v2 | Kroky Štandardu, platby, otázky |
 | /projekty/cee | v2 | Prípadová štúdia |
 | /en/… | v2 | Anglická záloha |
@@ -51,7 +51,7 @@ Hero nesie Express: práve v ňom platí veta doslova, preto ho pomenujeme hneď
 
 - **Štítok:** vývojárske štúdio zo Žiliny
 - **Nadpis:** Kým iní ešte naceňujú, my už [vyvíjame / testujeme / nasadzujeme]
-- **Veta pod ním:** S DoubleB Express máte rámcovú cenu do 24 hodín po prvom hovore. Prvú verziu menšieho projektu do 7 dní.
+- **Veta pod ním:** S DoubleB Express máte rámcovú cenu do 24 hodín po prvom hovore. Prvú verziu menšieho projektu do 10 dní.
 - **Tlačidlá:** „Napíšte nám“ (hlavné, na `#kontakt`) a „Ako funguje Express“ (vedľajšie, na `#ako-pracujeme`)
 - **Minimapa** vpravo (len desktop).
 
@@ -60,7 +60,7 @@ Pás čísel pod hero (čísla sa pri prvom zobrazení dopočítajú od nuly, Pl
 | Číslo | Popis |
 | --- | --- |
 | 24 h | rámcová cena v Exprese po úvodnom hovore |
-| 7 dní | prvá verzia menšieho projektu v Exprese |
+| 10 dní | prvá verzia menšieho projektu v Exprese |
 | 10 dní | od prvého hovoru po spustenie prihlášok do CEE Startup Voucher (odkaz na `#projekty`) |
 
 ### 2. Čo staviame (SectionHeader, ServiceList)
@@ -122,7 +122,7 @@ Dve karty vedľa seba, Express prvý a zvýraznený (zelený štítok, zelené o
 - Podnadpis: Keď to potrebujete hneď.
 - Rámcová cena do 24 hodín po hovore
 - Začneme aj pred podpisom
-- Prvá verzia menšieho projektu do 7 dní
+- Prvá verzia menšieho projektu do 10 dní
 - Dohodnutý termín garantujeme
 
 **Štandard**

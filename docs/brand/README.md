@@ -6,7 +6,7 @@ Veľkosti písma a medzery sú návrh. Overte ich na prvej verzii webu a zmeňte
 
 > Kým iní ešte naceňujú, my už vyvíjame.
 
-Hero stojí na skutočnom procese: rámcová cena do 24 hodín zadarmo a pri expresných projektoch prvá verzia do 7 dní. Pod hero vždy patrí veta s dôkazom („Rámcovú cenu máte do 24 hodín. Pri expresných projektoch prvú verziu do 7 dní.“) a pás s doložiteľnými číslami. Rýchlosť sľubuje veľa firiem, dôkaz takmer nikto.
+Hero stojí na skutočnom procese: rámcová cena do 24 hodín zadarmo a pri expresných projektoch prvá verzia do 10 dní. Pod hero vždy patrí veta s dôkazom („Rámcovú cenu máte do 24 hodín. Pri expresných projektoch prvú verziu do 10 dní.“) a pás s doložiteľnými číslami. Rýchlosť sľubuje veľa firiem, dôkaz takmer nikto.
 
 Interná onlyness (nepublikuje sa): DoubleB je jediné vývojárske štúdio v Žiline, kde každý rozumie produktu aj kódu a každý zvládne celý projekt, takže klient nikdy nečaká na niekoho iného.
 
@@ -44,12 +44,12 @@ Klientov menujeme len s ich súhlasom. Dovtedy ich opíšeme („Aplikácia pre 
 
 ## Farby
 
-Dva režimy, jedna zelená. Tokeny sa medzi režimami prepínajú samy (`data-theme="hlasny"` na ľubovoľnom obale).
+Dva režimy, dve zelené. Tokeny sa medzi režimami prepínajú samy (`data-theme="hlasny"` na ľubovoľnom obale).
 
 - **Tichý režim je predvolený:** `bg` čistá čierna, text `ink`, odseky `ink-soft`, popisky `muted`, zelená `accent` len ako akcent.
 - **Hlasný režim** (`bg` je zelená #00FF00): len hero na eventoch, merch, roll-upy a grafiky. Veľká zelená plocha kričí, preto je vzácna.
-- `accent` je jedna presná zelená #00FF00 z loga (odtieň 120°). Nikdy ju neposúvajte k žltej: limetky okolo 70° na čiernej majú v Žiline iné štúdiá. Žiadne varianty, tiene ani prechody.
-- Zelené plochy na stránke sú len hlavné tlačidlá. Inak je zelená na paličkách modulu, číslach, lehotách a preklápanom slove.
+- Dve zelené: `accent` (#32E94D, pôvodná zelená jemne stlmená do bielej) je bežný akcent, `accent-strong` (#00FF00 z loga, odtieň 120°) je len pre plochu hlavných tlačidiel. Zelenú nikdy neposúvajte k žltej: limetky okolo 70° na čiernej majú v Žiline iné štúdiá. Stlmujte len do bielej, nie do čiernej; inak žiadne ďalšie varianty, tiene ani prechody.
+- Zelené plochy na stránke sú len hlavné tlačidlá (v `accent-strong`). Inak je zelená (`accent`) na paličkách modulu, číslach, lehotách a preklápanom slove.
 - Text na čiernej nie je čisto biely (`ink` #E8EAE8). Na OLED displejoch sa tak lepšie číta a pri scrollovaní menej rozmazáva.
 - Dlhý text nikdy v `accent`. Text na zelenej ploche je vždy `on-accent`.
 - `subtle` a `line` sú len dekorácia, nikdy text ani rámik ovládacieho prvku. Rámiky polí a vedľajších tlačidiel sú `muted`.

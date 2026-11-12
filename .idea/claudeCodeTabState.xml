@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ClaudeCodeTabState">
+    <option name="tabSessions">
+      <map>
+        <entry key="0">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="099d7632-11b8-45d2-938d-fe3373655f7c" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="1">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="b2de9cb6-6dc2-49ad-9796-d0fffcfc2800" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="947b3b4a-c5c6-4cd9-80c1-686ffbc5b262" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="3">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="cccdfa1e-873f-412e-988b-16daea46956f" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="4">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="103cea41-11a4-495c-ae20-857deed7c83d" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="5">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="40205dc7-2944-474e-b3f0-3f81b3f8c19a" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+              <option name="reasoningEffort" value="high" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="6">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="622c3de4-b472-4c8e-b58c-a74db6b094a8" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+              <option name="reasoningEffort" value="high" />
+            </TabSessionState>
+          </value>
+        </entry>
+        <entry key="7">
+          <value>
+            <TabSessionState>
+              <option name="projectPath" value="$PROJECT_DIR$" />
+              <option name="provider" value="claude" />
+              <option name="sessionId" value="1485b277-b24e-4fac-9495-9e34f581c8df" />
+              <option name="cwd" value="$PROJECT_DIR$" />
+              <option name="model" value="claude-opus-5-5[1m]" />
+              <option name="permissionMode" value="auto" />
+              <option name="reasoningEffort" value="high" />
+            </TabSessionState>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tabCount" value="8" />
+  </component>
+</project>

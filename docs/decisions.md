@@ -16,7 +16,7 @@ Cieľ: byť značkou, na ktorú si v Žiline spomenú, keď niekto potrebuje apl
 - **Čo chceme robiť viac:** menšie aplikácie, produkty pre startupy, zaujímavé prezentačné weby s niečím navyše, dlhodobý vývoj za mesačný paušál.
 - **Čo nerobíme:** rozsiahle firemné systémy, projekty napojené na hardvér, jednostránkové prezentačné weby.
 - **Hero:** „Kým iní ešte naceňujú, my už vyvíjame.“ Veta platí doslova v DoubleB Express, preto ho hero vždy pomenuje.
-- **Dve tempá:** Express (cena do 24 h po hovore, začíname aj pred podpisom, prvá verzia menšieho projektu do 7 dní, termín garantujeme) a Štandard (analýza a cena do 48 h po hovore). Pri Exprese ostatné projekty nezastavujeme, kapacitu pridáme vlastným časom alebo posilou.
+- **Dve tempá:** Express (cena do 24 h po hovore, začíname aj pred podpisom, prvá verzia menšieho projektu do 10 dní, termín garantujeme) a Štandard (analýza a cena do 48 h po hovore). Pri Exprese ostatné projekty nezastavujeme, kapacitu pridáme vlastným časom alebo posilou.
 - **Čím sa líšime (interne):** každý, kto na projekte robí, pozná celý projekt, produkt aj kód. Keď jeden chýba, druhý pokračuje bez odovzdávania. Sólo vývojár to nevie sľúbiť, veľká agentúra to nerobí.
 
 ## Hlas
