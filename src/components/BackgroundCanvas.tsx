@@ -11,10 +11,20 @@ const STROKE = 0.6;
 const BASE_ALPHA = 0.016;
 const CURSOR_R = 210;
 const CURSOR_BOOST = 0.25;
-// Mobil: jemná žiara pod prstom (ťuknutie aj scroll), menšia a slabšia než kurzor.
-const TOUCH_R = 120;
-const TOUCH_BOOST = 0.15;
+// Mobil: žiara pod prstom (ťuknutie aj scroll). Silnejšia a s hrubšou čiarou než kurzor,
+// lebo stred zakrýva prst a na malom displeji by tenké obrysy neboli vidno.
+const TOUCH_R = 150;
+const TOUCH_BOOST = 0.55;
+const TOUCH_STROKE = 1.2;
 const INTERACTIVE = "a,button,input,textarea,select,label,summary,[role='button'],[role='tab']";
+
+// Tokeny trvania v ms. Minifikátor CSS ich v builde prepíše na sekundy (240ms → .24s).
+function durationMs(styles: CSSStyleDeclaration, name: string, fallback: number) {
+  const raw = styles.getPropertyValue(name).trim();
+  const value = parseFloat(raw);
+  if (Number.isNaN(value)) return fallback;
+  return raw.endsWith("ms") ? value : raw.endsWith("s") ? value * 1000 : value;
+}
 
 function isPill(row: number, col: number) {
   return (row * 7 + col * 11) % 5 === 0;
@@ -37,8 +47,11 @@ export function BackgroundCanvas() {
     let rafPending = false;
     let isTouch = false;
 
-    // Žiara pod prstom: drží sa, kým je prst na displeji, po pustení dohasne za --dur-slow.
-    const fadeMs = parseFloat(getComputedStyle(canvas).getPropertyValue("--dur-slow")) || 560;
+    // Žiara pod prstom: drží sa, kým je prst na displeji a kým stránka po švihnutí ešte ide.
+    // Potom ostane --dur-mid a za --dur-slow dohasne.
+    const styles = getComputedStyle(canvas);
+    const holdMs = durationMs(styles, "--dur-mid", 240);
+    const fadeMs = durationMs(styles, "--dur-slow", 560);
     let touchX = -9999;
     let touchY = -9999;
     let touchDown = false;
@@ -65,10 +78,9 @@ export function BackgroundCanvas() {
       if (touchDown) {
         touchGlow = 1;
       } else if (touchGlow > 0) {
-        const t = Math.min(1, (performance.now() - touchReleasedAt) / fadeMs);
+        const t = Math.min(1, Math.max(0, performance.now() - touchReleasedAt - holdMs) / fadeMs);
         touchGlow = (1 - t) * (1 - t);
       }
-      ctx.lineWidth = STROKE;
 
       const cols = Math.ceil(W / GRID) + 2;
       const rows = Math.ceil(H / GRID) + 2;
@@ -101,6 +113,7 @@ export function BackgroundCanvas() {
             ctx.strokeStyle = `rgba(232,234,232,${alpha})`;
           }
 
+          ctx.lineWidth = touchProximity > 0.01 ? TOUCH_STROKE : STROKE;
           ctx.beginPath();
           ctx.roundRect(x, y, w, h, h / 2);
           ctx.stroke();
@@ -157,6 +170,11 @@ export function BackgroundCanvas() {
       scheduleRedraw();
     }
 
+    function onScroll() {
+      // Dobeh po švihnutí: kým sa stránka hýbe, žiara nezačne dohasínať.
+      if (!touchDown && touchGlow > 0) touchReleasedAt = performance.now();
+    }
+
     function onPointerLeave() {
       cursorX = -9999;
       cursorY = -9999;
@@ -172,6 +190,7 @@ export function BackgroundCanvas() {
       window.addEventListener("touchmove", onTouchMove, { passive: true });
       window.addEventListener("touchend", onTouchEnd, { passive: true });
       window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
     }
     window.addEventListener("resize", resize, { passive: true });
 
@@ -182,6 +201,7 @@ export function BackgroundCanvas() {
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("touchcancel", onTouchEnd);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
     };
   }, []);
