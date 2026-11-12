@@ -43,7 +43,7 @@ Komponent v zátvorke odkazuje na `docs/brand/components/<Názov>/` (README s pr
 - Znak (orezaný JPG, trieda `db-mark`) a wordmark DoubleB.
 - Menu podľa mapy vyššie, aktuálna sekcia pri scrollovaní má `aria-current`.
 - Mobil: ikona z dvoch riadkov kódu, menu cez celú obrazovku s číslovanými odkazmi.
-- Mobil: keď hero zmizne z obrazovky, dole sa objaví lepiace tlačidlo „Napíšte nám“.
+- Mobil: keď hero zmizne z obrazovky, dole sa objaví lepiace tlačidlo „Napíšte nám“ na tmavej lište cez celú šírku. Keď je na obrazovke kontakt alebo pätička, tlačidlo sa skryje.
 
 ### 1. Hero (HeroSection, WordFlip, PlayedNumber)
 
@@ -83,7 +83,7 @@ Pás čísel pod hero (čísla sa pri prvom zobrazení dopočítajú od nuly, Pl
 CEE je hlavná karta: na finále ju uvidia ľudia, ktorí platformu sami používali. SmartGym ostane menší a bez dôrazu, Iudicata ukáže, že rozmýšľame ako produkt.
 
 - **Štítok:** 02 / projekty
-- **Nadpis:** Prihlášky do CEE Startup Voucher sme spustili 10 dní po prvom hovore.
+- **Nadpis:** Prihlášky do CEE Startup Voucher
 
 **CEE** (veľká karta, na desktope cez dva stĺpce, slug `cee`)
 
@@ -192,7 +192,7 @@ Na finále väčšina ľudí otvorí web z QR kódu na telefóne, preto testujte
 
 | Sekcia | Desktop | Mobil |
 | --- | --- | --- |
-| Menu | položky v lište, tlačidlo vpravo | ikona z dvoch riadkov kódu, menu cez celú obrazovku; po odscrollovaní hero lepiace tlačidlo „Napíšte nám“ dole |
+| Menu | položky v lište, tlačidlo vpravo | ikona z dvoch riadkov kódu, menu cez celú obrazovku; po odscrollovaní hero lepiace tlačidlo „Napíšte nám“ dole, pri kontakte a pätičke sa skryje |
 | Hero | nadpis 64 px, minimapa vpravo | nadpis 40 px, bez minimapy; nadpis, veta a tlačidlo sa zmestia na prvú obrazovku |
 | Pás čísel | tri vedľa seba | pod sebou, číslo a popis v jednom riadku |
 | Čo staviame | číslo, názov a text v troch stĺpcoch | všetko pod sebou, štítky sa zalamujú |
@@ -207,6 +207,7 @@ Hravé prvky na mobile:
 - Celé naše štúdio: otvorí sa ťuknutím a zavrie ďalším. Karta s fotkami je pod textom, nikdy cezň.
 - Odohrané čísla: prehrajú sa raz, keď sa pás prvýkrát objaví na obrazovke.
 - Bodka na paličku: na mobile pri stlačení tlačidla, nie pri prejdení myšou.
+- Žiara pozadia: na desktope modul pozadia zozelenie okolo kurzora. Na mobile jemne zozelenie pod prstom pri ťuknutí aj pri scrollovaní a po pustení za `dur-slow` dohasne. Ťuknutie na odkaz, tlačidlo alebo pole formulára žiaru nespustí.
 - E-mail: na desktope klik skopíruje adresu, na mobile ťuknutie otvorí poštu.
 - Všetko klikateľné má aspoň 44 px na výšku, polia formulára písmo aspoň 16 px, inak iPhone pri písaní priblíži stránku.
 - Pri zapnutom obmedzení pohybu sa nič nepreklápa ani neprehráva.

@@ -127,7 +127,7 @@ Päť pravidiel pre každý hravý moment:
 4. Používa len systém: `accent`, modul, tri rýchlosti, písanie kódu.
 5. Humor zo seba, nie z iných.
 
-Schválené: Celé naše štúdio, Odohrané čísla, Skrytý terminál (kláves /), chybová stránka 404 s chýbajúcim riadkom, kopírovanie e-mailu na klik.
+Schválené: Celé naše štúdio, Odohrané čísla, žiara modulu pozadia pod kurzorom a na mobile pod prstom, Skrytý terminál (kláves /), chybová stránka 404 s chýbajúcim riadkom, kopírovanie e-mailu na klik.
 
 ## Ikonografia
 

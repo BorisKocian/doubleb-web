@@ -11,6 +11,10 @@ const STROKE = 0.6;
 const BASE_ALPHA = 0.016;
 const CURSOR_R = 210;
 const CURSOR_BOOST = 0.25;
+// Mobil: jemná žiara pod prstom (ťuknutie aj scroll), menšia a slabšia než kurzor.
+const TOUCH_R = 120;
+const TOUCH_BOOST = 0.15;
+const INTERACTIVE = "a,button,input,textarea,select,label,summary,[role='button'],[role='tab']";
 
 function isPill(row: number, col: number) {
   return (row * 7 + col * 11) % 5 === 0;
@@ -33,6 +37,14 @@ export function BackgroundCanvas() {
     let rafPending = false;
     let isTouch = false;
 
+    // Žiara pod prstom: drží sa, kým je prst na displeji, po pustení dohasne za --dur-slow.
+    const fadeMs = parseFloat(getComputedStyle(canvas).getPropertyValue("--dur-slow")) || 560;
+    let touchX = -9999;
+    let touchY = -9999;
+    let touchDown = false;
+    let touchReleasedAt = 0;
+    let touchGlow = 0;
+
     function resize() {
       if (!canvas) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -49,6 +61,13 @@ export function BackgroundCanvas() {
       const W = window.innerWidth;
       const H = window.innerHeight;
       ctx.clearRect(0, 0, W, H);
+
+      if (touchDown) {
+        touchGlow = 1;
+      } else if (touchGlow > 0) {
+        const t = Math.min(1, (performance.now() - touchReleasedAt) / fadeMs);
+        touchGlow = (1 - t) * (1 - t);
+      }
       ctx.lineWidth = STROKE;
 
       const cols = Math.ceil(W / GRID) + 2;
@@ -64,14 +83,19 @@ export function BackgroundCanvas() {
           const cx = x + (pill ? PILL_W / 2 : DOT_W / 2);
           const cy = y + DOT_H / 2;
 
-          const dist = Math.hypot(cx - cursorX, cy - cursorY);
-          const proximity = Math.max(0, 1 - dist / CURSOR_R);
-          const alpha = BASE_ALPHA + proximity * CURSOR_BOOST;
+          const proximity = isTouch
+            ? 0
+            : Math.max(0, 1 - Math.hypot(cx - cursorX, cy - cursorY) / CURSOR_R);
+          const touchProximity = touchGlow > 0
+            ? Math.max(0, 1 - Math.hypot(cx - touchX, cy - touchY) / TOUCH_R) * touchGlow
+            : 0;
+          const boost = proximity * CURSOR_BOOST + touchProximity * TOUCH_BOOST;
+          const alpha = BASE_ALPHA + boost;
 
           const w = pill ? PILL_W : DOT_W;
           const h = pill ? PILL_H : DOT_H;
 
-          if (proximity > 0.01 && !isTouch) {
+          if (boost > 0.0025) {
             ctx.strokeStyle = `rgba(0,255,0,${alpha})`;
           } else {
             ctx.strokeStyle = `rgba(232,234,232,${alpha})`;
@@ -83,6 +107,8 @@ export function BackgroundCanvas() {
         }
       }
       rafPending = false;
+      // Kým žiara dohasína, kreslí sa ďalej; potom slučka stojí.
+      if (!touchDown && touchGlow > 0) scheduleRedraw();
     }
 
     function scheduleRedraw() {
@@ -103,6 +129,34 @@ export function BackgroundCanvas() {
       scheduleRedraw();
     }
 
+    function onTouchStart(e: TouchEvent) {
+      const t = e.touches[0];
+      if (!t) return;
+      isTouch = true;
+      const target = e.target instanceof Element ? e.target : null;
+      if (target?.closest(INTERACTIVE)) return;
+      touchDown = true;
+      touchX = t.clientX;
+      touchY = t.clientY;
+      scheduleRedraw();
+    }
+
+    function onTouchMove(e: TouchEvent) {
+      const t = e.touches[0];
+      if (!t) return;
+      touchDown = true;
+      touchX = t.clientX;
+      touchY = t.clientY;
+      scheduleRedraw();
+    }
+
+    function onTouchEnd(e: TouchEvent) {
+      if (e.touches.length > 0 || !touchDown) return;
+      touchDown = false;
+      touchReleasedAt = performance.now();
+      scheduleRedraw();
+    }
+
     function onPointerLeave() {
       cursorX = -9999;
       cursorY = -9999;
@@ -114,12 +168,20 @@ export function BackgroundCanvas() {
     if (!prefersReduced) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
       window.addEventListener("pointerleave", onPointerLeave, { passive: true });
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      window.addEventListener("touchend", onTouchEnd, { passive: true });
+      window.addEventListener("touchcancel", onTouchEnd, { passive: true });
     }
     window.addEventListener("resize", resize, { passive: true });
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerleave", onPointerLeave);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
       window.removeEventListener("resize", resize);
     };
   }, []);
