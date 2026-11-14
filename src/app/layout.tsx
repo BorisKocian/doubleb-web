@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/config/site";
 
 // Poradie importov je dôležité: tokeny, potom triedy komponentov, potom globálne úpravy.
@@ -51,7 +52,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="tichy"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
-      <body className="db">{children}</body>
+      <body className="db">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
