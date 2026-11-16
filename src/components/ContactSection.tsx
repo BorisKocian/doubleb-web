@@ -56,6 +56,13 @@ function ContactForm() {
         />
       </label>
 
+      <div className="sr-only" aria-hidden="true">
+        <label>
+          Firma
+          <input name="company" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <label className="check">
         <input type="checkbox" name="express" style={{ accentColor: "var(--accent)" }} />
         <span>

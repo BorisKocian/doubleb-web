@@ -14,6 +14,19 @@ npm run dev
 
 Web beží na http://localhost:3000.
 
+## Nasadenie (Vercel)
+
+Projekt beží na Verceli bez úprav buildu. `vercel.json` len nastavuje región `fra1` (Frankfurt), aby Server Action formulára bežala blízko návštevníkov zo Slovenska.
+
+1. Na vercel.com: Add New, Project, importovať `BorisKocian/doubleb-web`. Framework sa rozpozná sám (Next.js), build `npm run build`.
+2. V Settings, Environment Variables doplniť premenné z `.env.example`:
+   - `NEXT_PUBLIC_SITE_URL`: až keď bude doména (napr. `https://doubleb.dev`). Dovtedy sa použije adresa `*.vercel.app`.
+   - `CONTACT_TO_EMAIL`, `RESEND_API_KEY`: pre kontaktný formulár.
+3. Deploy. Každý push do `main` nasadí produkciu, každá iná vetva dostane náhľadovú adresu.
+4. Doménu pridať v Settings, Domains a potom nastaviť `NEXT_PUBLIC_SITE_URL` a znova nasadiť.
+
+Pred nasadením lokálne: `npm run lint`, `npm run typecheck`, `npm run build`.
+
 ## Kde čo je
 
 | Čo | Kde |

@@ -68,23 +68,9 @@ export function HeroSection() {
   const { proof, words, headline, eyebrow, lead, primaryCta, secondaryCta } = content.hero;
   const { display, idle } = useTyping(words);
 
-  const heroRef = useRef<HTMLElement>(null);
-  const [showSticky, setShowSticky] = useState(false);
-
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => setShowSticky(!entry.isIntersecting),
-      { threshold: 0.05 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <>
-      <section className="hero db-wrap" id="top" ref={heroRef}>
+      <section className="hero db-wrap" id="top">
         <div className="hero-copy">
           <div className="eyebrow">
             <span className="db-dot db-on" />
@@ -128,15 +114,6 @@ export function HeroSection() {
           ))}
         </div>
       </section>
-
-      {/* Mobile sticky CTA */}
-      <a
-        className={`mobile-sticky-cta${showSticky ? " visible" : ""}`}
-        href="#kontakt"
-      >
-        <span className="db-dot" />
-        {content.nav.cta}
-      </a>
     </>
   );
 }

@@ -8,7 +8,12 @@ export const site = {
     "Menšie aplikácie a produkty pre startupy. S DoubleB Express máte rámcovú cenu do 24 hodín po prvom hovore.",
 
   // TODO: doména ešte nie je. Zmeňte aj NEXT_PUBLIC_SITE_URL v .env.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  // Na Verceli bez nastavenej premennej berieme produkčnú adresu projektu (*.vercel.app).
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000"),
   email: "ahoj@doubleb.dev",
   // TODO: doplniť IČO.
   ico: "",
