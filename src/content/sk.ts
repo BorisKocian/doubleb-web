@@ -17,7 +17,7 @@ export const content = {
     eyebrow: "vývojárske štúdio zo Žiliny",
     headline: "Kým iní ešte naceňujú, my už",
     words: ["vyvíjame.", "testujeme.", "nasadzujeme."],
-    lead: "Pre tímy, ktoré nemajú vlastných vývojárov. Navrhneme a naprogramujeme ich od začiatku a ostaneme pri nich aj po spustení.",
+    lead: "Pre tímy, ktoré nemajú vlastných vývojárov. Appky navrhneme, naprogramujeme, a ostaneme pri nich aj po spustení.",
     primaryCta: "Napíšte nám",
     secondaryCta: "Pozrieť reálny projekt",
     proof: [
