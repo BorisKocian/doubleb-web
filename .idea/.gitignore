@@ -8,3 +8,7 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Claude Code IDE tab state (local, churns every session)
+/claudeCodeTabState.xml
+# TypeScript compiler settings (local editor preference)
+/compiler.xml
